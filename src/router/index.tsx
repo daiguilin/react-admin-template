@@ -1,23 +1,33 @@
 import {Navigate } from "react-router-dom"
-import Home from "@/views/Home"
-import About from "@/views/About"
-import User from "@/views/User"
-//路由的第一种写法，旧的写法
+import {lazy,Suspense} from "react"
+// import Home from "@/views/Home"
+// import About from "@/views/About"
+// import User from "@/views/User"
+const Home = lazy(()=>import("@/views/Home"))
+const About = lazy(()=>import("@/views/About"))
+const User = lazy(()=>import("@/views/User"))
+
+const withLoadingComponent = (comp:JSX.Element)=>(
+    <Suspense fallback={<div>loading...</div>}>
+        {comp}
+    </Suspense>
+)
+//路由的第二种写法，新的写法
 const routes = [
     {
         path: '/',
         element: <Navigate to="/home"/>
     }, {
         path: '/home',
-        element: <Home />
+        element: withLoadingComponent(<Home />)
     },
     {
         path: '/about',
-        element: <About />
+        element: withLoadingComponent(<About />)
     },
     {
         path: '/user',
-        element: <User />
+        element: withLoadingComponent(<User />)
     },
     
 ]
