@@ -7,11 +7,15 @@ import "reset-css"
 //全局样式
 import "@/assets/styles/global.scss"
 //组件的样式
-import Routers from '@/router'
+import App from '@/App'
+import { BrowserRouter } from "react-router-dom"
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <Routers />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+
   </React.StrictMode>,
 )
