@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes,Navigate } from "react-router-dom"
 import App from "@/App"
 import Home from "@/views/Home"
-import About from "@/views/About"
+import About from "@/views/Page1"
 //路由的第一种写法，旧的写法
 const baseRouter = () => (
     <BrowserRouter>
