@@ -4,6 +4,7 @@ import Home from "@/views/Home"
 // import About from "@/views/About"
 // import User from "@/views/User"
 // const Home = lazy(() => import("@/views/Home"))
+import Login from "@/views/login"
 const Page1 = lazy(() => import("@/views/Page1"))
 const Page2 = lazy(() => import("@/views/Page2"))
 const Page301 = lazy(() => import("@/views/Page301"))
@@ -37,6 +38,10 @@ const routes = [
                 element: withLoadingComponent(<Page301 />)
             }
         ]
+    },
+    {
+        path: "/login",
+        element:<Login />
     },
     {
         path: "*",
