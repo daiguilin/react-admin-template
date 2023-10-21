@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux"
 // import store from "@/store"
 //TS中提供的returnType，来获取函数类型的返回值
 // type RootState = ReturnType<typeof store.getState>
+import numStatus from "@/store/numStatus"
 const View = () => {
     const { num,sarr } = useSelector((state:RootState) => {
         return {
@@ -10,10 +11,13 @@ const View = () => {
         }
     })
     const dispatch = useDispatch()
+    const changeNum2 = () => {
+        dispatch(numStatus.asyncActions.asyncAdd1)
+    }
     const changeNum = () => {
         dispatch({
-            type: 'add1',
-            val:1
+            type: 'add2',
+            val:10
         })
     }
     const changeArr = () => {
@@ -30,7 +34,8 @@ const View = () => {
 
             <p>num---{num}</p>
             
-            <button onClick={changeNum}>changeNum</button>
+            <button onClick={changeNum}>同步按钮</button>
+            <button onClick={changeNum2}>异步按钮</button>
         </div>
     )
 }
