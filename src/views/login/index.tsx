@@ -1,11 +1,13 @@
 import { ChangeEvent, useEffect,useState } from 'react'
 import { Space,Input,Button } from "antd"
 import initLoginBg from './init'
+import {CaptchaAPI} from "@/request/api"
 import styles from "./login.module.scss"
 import "./login.less"
 const View = () => {
     useEffect(() => {
         initLoginBg()
+        getCaptchaImg()
         window.onresize = () => {
             initLoginBg()
         }
@@ -25,6 +27,15 @@ const View = () => {
     const gotoLogin = () => {
         console.log(username,password,captcha)
     }
+    const getCaptchaImg = async() => {
+        // CaptchaAPI()
+        // .then(res=>{
+        //     console.log(res)
+        // })
+        const  captchaAPIRes = await CaptchaAPI()
+        console.log(captchaAPIRes);
+        
+    }
     return (
         <div className={styles.loginPage}>
             {/* 存放背景 */}
@@ -43,7 +54,7 @@ const View = () => {
                         <Input.Password placeholder="密码" onChange={passwordChange}/>
                         <div className="captchaBox">
                             <Input placeholder="验证码"onChange={captchaChange}/>
-                            <img height={38} src='' alt="验证码" className="captchaImg"/>
+                            <img height={38} src='' alt="验证码" className="captchaImg" onClick={getCaptchaImg}/>
                         </div>
                         <Button type='primary' block onClick={gotoLogin}>登录</Button>
                     </Space>
